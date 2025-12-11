@@ -7,5 +7,17 @@ Feature:
         Then the tasklist should contain task "Read book"
         And the task "Read book" should be not done
 
+    @list_tasks
+    Scenario: List all tasks in the tasklist
+        Given the tasklist contains the following tasks:
+            | task        | done |
+            | Read book   | false |
+            | Buy milk    | true  |
+        When the user requests to list all tasks
+        Then the tasklist should show:
+            | task        | done |
+            | Read book   | false |
+            | Buy milk    | true  |
+
 
 
