@@ -15,3 +15,7 @@ def mark_task_completed(task: str):
         tasklist[task] = True
         return True
     return False
+
+def clear_list():
+    tasklist.clear()
+    return True
