@@ -9,7 +9,7 @@ def step_impl(context):
     todo_list = TodoList()
 
 
-@given('the user enters a new task "{task}"')
+@when('the user enters a new task "{task}"')
 def step_impl(context, task):
     global todo_list
     todo_list.add_task(task)
