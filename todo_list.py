@@ -10,3 +10,8 @@ def all_tasks():
         print(f"Task {i}: {task} -> Completed: {done}")
         
 # implementar lcada requerimiento como función
+def mark_task_completed(task: str):
+    if task in tasklist:
+        tasklist[task] = True
+        return True
+    return False
