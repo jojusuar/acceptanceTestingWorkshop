@@ -46,7 +46,7 @@ def step_impl(context):
 @then('the tasklist should show:')
 def step_impl(context):
     expected_tasks = {row['task']: row['done'].lower() == 'true' for row in context.table}
-    assert context.listed_tasks == expected_tasks, f"Expected {expected_tasks}, got {context.all_tasks}"
+    assert context.listed_tasks == expected_tasks, f"Expected {expected_tasks}, got {context.listed_tasks}"
 
 
 @when('the user deletes the task "{task}"')
