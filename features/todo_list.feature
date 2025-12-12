@@ -33,6 +33,7 @@ Feature:
         Then the tasklist should show:
         | task      | done  |
         | Read book | false |
+
     @mark_completed
     Scenario: Mark a task as completed
         Given the tasklist contains the following tasks:
@@ -40,4 +41,14 @@ Feature:
             | Buy groceries | false |
         When the user marks task "Buy groceries" as completed
         Then the tasklist should show task "Buy groceries" as completed
+
+    @clear_list
+    Scenario: Wipe all tasks from the list
+        Given the tasklist contains the following tasks:
+            | task          | done  |
+            | Read book | false |
+            | Buy milk  | true  |
+            | Buy groceries | false |
+        When the user clears the list
+        Then the tasklist should now be empty
         
