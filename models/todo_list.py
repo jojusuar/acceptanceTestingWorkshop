@@ -9,7 +9,6 @@ class TodoList:
     def all_tasks(self):
         for i, (task, done) in enumerate(self.tasklist.items()):
             print(f"Task {i}: {task} -> Completed: {done}")
-        # Agregado retorno del diccionario de tareas
         return self.tasklist
 
     def mark_task_completed(self, task: str):
