@@ -9,6 +9,8 @@ class TodoList:
     def all_tasks(self):
         for i, (task, done) in enumerate(self.tasklist.items()):
             print(f"Task {i}: {task} -> Completed: {done}")
+        # Agregado retorno del diccionario de tareas
+        return self.tasklist
 
     def mark_task_completed(self, task: str):
         if task in self.tasklist:
@@ -19,3 +21,9 @@ class TodoList:
     def clear_list(self):
         self.tasklist.clear()
         return True
+    
+    def delete_task(self, task: str):
+        if task in self.tasklist:
+            del self.tasklist[task]
+            return True
+        return False

@@ -27,7 +27,7 @@ def step_impl(context, task):
     assert todo_list.tasklist.get(task) is False, f"Task {task} is done"
 
 
-@given('the tasklist contains the following tasks')
+@given('the tasklist contains the following tasks:')
 def step_impl(context):
     global todo_list
     todo_list = TodoList()
@@ -47,3 +47,9 @@ def step_impl(context):
 def step_impl(context):
     expected_tasks = {row['task']: row['done'].lower() == 'true' for row in context.table}
     assert context.listed_tasks == expected_tasks, f"Expected {expected_tasks}, got {context.all_tasks}"
+
+
+@when('the user deletes the task "{task}"')
+def step_impl(context, task):
+    global todo_list
+    todo_list.delete_task(task)
