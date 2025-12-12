@@ -53,6 +53,8 @@ def step_impl(context):
 def step_impl(context, task):
     global todo_list
     todo_list.delete_task(task)
+
+
 @when('the user marks task "{task}" as completed')
 def step_impl(context, task):
     global todo_list
@@ -65,4 +67,16 @@ def step_impl(context, task):
     global todo_list
     assert task in todo_list.tasklist, f"Task {task} not found in tasklist"
     assert todo_list.tasklist[task] is True, f"Task {task} is not marked as completed"
-    
+
+
+@when('the user clears the list')
+def step_impl(context):
+    global todo_list
+    assert todo_list.clear_list() == True, "The list failed to be cleared"
+
+
+@then('the tasklist should now be empty')
+def step_impl(context):
+    global todo_list
+    list_length = len(todo_list.all_tasks())
+    assert list_length == 0, f'Expected list length = 0, but got length = {list_length}'
