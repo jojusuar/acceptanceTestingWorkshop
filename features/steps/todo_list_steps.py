@@ -47,3 +47,18 @@ def step_impl(context):
 def step_impl(context):
     expected_tasks = {row['task']: row['done'].lower() == 'true' for row in context.table}
     assert context.listed_tasks == expected_tasks, f"Expected {expected_tasks}, got {context.all_tasks}"
+
+
+@when('the user marks task "{task}" as completed')
+def step_impl(context, task):
+    global todo_list
+    result = todo_list.mark_task_completed(task)
+    context.mark_result = result
+
+
+@then('the tasklist should show task "{task}" as completed')
+def step_impl(context, task):
+    global todo_list
+    assert task in todo_list.tasklist, f"Task {task} not found in tasklist"
+    assert todo_list.tasklist[task] is True, f"Task {task} is not marked as completed"
+    

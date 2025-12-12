@@ -10,14 +10,20 @@ Feature:
     @list_tasks
     Scenario: List all tasks in the tasklist
         Given the tasklist contains the following tasks:
-            | task        | done |
+            | task        | done  |
             | Read book   | false |
             | Buy milk    | true  |
         When the user requests to list all tasks
         Then the tasklist should show:
-            | task        | done |
+            | task        | done  |
             | Read book   | false |
             | Buy milk    | true  |
 
-
-
+    @mark_completed
+    Scenario: Mark a task as completed
+        Given the tasklist contains the following tasks:
+            | task          | done  |
+            | Buy groceries | false |
+        When the user marks task "Buy groceries" as completed
+        Then the tasklist should show task "Buy groceries" as completed
+        
